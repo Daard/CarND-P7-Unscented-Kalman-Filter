@@ -32,7 +32,7 @@ public:
   MatrixXd Xsig_pred_;
 
   ///* time when the state is true, in us
-  long long time_us_;
+  long time_us_;
 
   ///* Process noise standard deviation longitudinal acceleration in m/s^2
   double std_a_;
@@ -67,6 +67,47 @@ public:
   ///* Sigma point spreading parameter
   double lambda_;
 
+  //Additional fields for laser and radar update
+  ////
+  int n_radar_;
+
+  // predicted sigma points of radar
+  MatrixXd Zsig_radar_;
+
+  // Predicted state mean of radar
+  VectorXd z_pred_radar_;
+
+  //Radar covariance matrix
+  MatrixXd S_radar_;
+
+  // Radar measurement noise covariance matrix
+  MatrixXd R_radar_;
+
+  // Radar cross correlation matrix
+  MatrixXd Tc_radar_;
+
+  // Radar Kalman gain
+  MatrixXd K_radar_;
+ 
+  int n_lidar_;
+
+  // predicted sigma points of lidar
+  MatrixXd Zsig_lidar_;
+
+  // Predicted state mean of radar
+  VectorXd z_pred_lidar_;
+
+  // Lidar covariance matrix
+  MatrixXd S_lidar_;
+
+  // Lidar measurement noise covariance matrix
+  MatrixXd R_lidar_;
+
+  // Lidar cross correlation matrix
+  MatrixXd Tc_lidar_;
+
+  // Lidar Kalman gain
+  MatrixXd K_lidar_;
 
   /**
    * Constructor
